@@ -1,12 +1,40 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+// ============================================
+// NAVBAR
+// ============================================
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+.navbar {
+  background: $darkbg !important;
+  border-bottom: 2px solid $pokeyellow;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .navbar-brand {
+    font-family: $headers-font;
+    font-size: 0.7rem;
+    color: $pokeyellow !important;
+    text-shadow: 0 0 10px rgba($pokeyellow, 0.4);
+    letter-spacing: 0.05em;
+  }
+
+  .navbar-pokeball {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+
+    &:hover { transform: rotate(360deg); }
+  }
+
+  .nav-link {
+    color: rgba($white, 0.65) !important;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover {
+      color: $pokeyellow !important;
+      background: rgba($pokeyellow, 0.1);
+    }
+  }
 }

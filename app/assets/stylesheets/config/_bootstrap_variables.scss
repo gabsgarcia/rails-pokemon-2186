@@ -1,28 +1,37 @@
-// This is where you override default Bootstrap variables
-// 1. Find all Bootstrap variables that you can override at the end of each component's documentation under the `Sass variables` anchor
-// e.g. here are the ones you can override for the navbar https://getbootstrap.com/docs/5.3/components/navbar/#sass-variables
-// 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
-// 3. You can override them below!
+// ============================================
+// BOOTSTRAP VARIABLE OVERRIDES
+// Must be declared BEFORE @import "bootstrap"
+// ============================================
 
-// General style
+// Typography
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
 $font-size-base:         1rem;
 
-// Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+// Dark theme base
+$body-bg:    $darkbg;
+$body-color: $white;
 
-// Buttons & inputs' radius
-$border-radius-sm:            .0625rem;
-$border-radius:               .125rem;
-$border-radius-lg:            .25rem;
-$border-radius-xl:            .5rem;
-$border-radius-xxl:           1rem;
+// Brand colors mapped to Bootstrap roles
+$primary:  $pokeyellow;
+$success:  $green;
+$info:     $blue;
+$danger:   $red;
+$warning:  $orange;
 
-// Override other variables below!
+// Cards
+$card-bg:           $cardbg;
+$card-border-color: $cardedge;
+$card-color:        $white;
+
+// Navbar
+$navbar-dark-color:         rgba($white, 0.7);
+$navbar-dark-hover-color:   $pokeyellow;
+$navbar-dark-active-color:  $pokeyellow;
+
+// Border radius
+$border-radius-sm:  0.0625rem;
+$border-radius:     0.125rem;
+$border-radius-lg:  0.25rem;
+$border-radius-xl:  0.5rem;
+$border-radius-xxl: 1rem;

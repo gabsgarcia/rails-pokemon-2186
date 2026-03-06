@@ -1,0 +1,12 @@
+<header class="header">
+  <%= link_to "← All Trainers", trainers_path %>
+  <h1>Sign up to train</h1>
+</header>
+
+<%# multipart: true is required for file uploads! %>
+<%= simple_form_for @trainer, html: { multipart: true } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :photo %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

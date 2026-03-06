@@ -1,0 +1,33 @@
+<header class="header">
+  <%= link_to "← Pokédex", root_path %>
+</header>
+
+<div class="two-columns">
+  <div class="pokemon-details">
+    <p>You hear a rustle in the tall grass... A wild Pokémon appears!</p>
+    <%= render @pokemon %>
+
+    <% if @pokemon.api_id.present? %>
+      <div class="pokemon-cry">
+        <p class="pokemon-cry-label">🔊 Hear the cry!</p>
+        <audio controls>
+          <source src="<%= @pokemon.cry_url %>" type="audio/ogg">
+        </audio>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Do you dare to catch this Pokémon?</h2>
+
+    <%= simple_form_for [@pokemon, @pokeball] do |f| %>
+      <%= f.association :trainer, label: "Who's trying their luck?" %>
+      <%= f.input :location,
+          as: :select,
+          collection: Pokeball::TOWNS,
+          label: "Where are you?" %>
+      <%= f.input :caught_on, html5: true, label: "When?" %>
+      <%= f.submit "Catch!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

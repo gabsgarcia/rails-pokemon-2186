@@ -1,0 +1,12 @@
+<header class="header">
+  <%= link_to "← Pokédex", root_path %>
+  <h1>Let's Get Training</h1>
+</header>
+
+<div class="grid">
+  <% @trainers.each do |trainer| %>
+    <%= render trainer %>
+  <% end %>
+</div>
+
+<%= link_to "New Trainer", new_trainer_path, class: "btn btn-primary mt-5" %>

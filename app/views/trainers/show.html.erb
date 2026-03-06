@@ -1,0 +1,40 @@
+<header class="header">
+  <%= link_to "← Trainers", trainers_path %>
+  <h1><%= @trainer.name %> is going to catch 'em all!</h1>
+</header>
+
+<div class="two-columns">
+  <div class="trainer-details">
+    <%= render @trainer %>
+  </div>
+
+  <div>
+    <h2>Their Pokémon</h2>
+
+    <% if @trainer.pokeballs.exists? %>
+      <div class="grid">
+        <% @trainer.pokeballs.each do |pokeball| %>
+          <div class="pokemon-card">
+            <%= cl_image_tag pokeball.pokemon.photo.key %>
+            <h3><%= link_to pokeball.pokemon.name, pokeball.pokemon %></h3>
+            <span class="element-type"><%= pokeball.pokemon.element_type %></span>
+            <p>Caught on <%= pokeball.caught_on.strftime("%B %d, %Y") %> at <%= pokeball.location %></p>
+
+            <%# Optional 5: release button %>
+            <%= link_to "Release",
+                  pokeball,
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Release #{pokeball.pokemon.name} back to the wild?"
+                  },
+                  class: "btn btn-danger btn-sm" %>
+
+            <%= link_to "", pokemon_path(pokeball.pokemon), class: "pokemon-card-link" %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-secondary">This trainer has no Pokémon yet. They should get training!</p>
+    <% end %>
+  </div>
+</div>

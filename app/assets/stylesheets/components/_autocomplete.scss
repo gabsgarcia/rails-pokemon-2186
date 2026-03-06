@@ -1,0 +1,49 @@
+// ============================================
+// AUTOCOMPLETE DROPDOWN
+// ============================================
+
+.autocomplete-wrapper {
+  position: relative;  // dropdown positions relative to this
+}
+
+.autocomplete-results {
+  position: absolute;
+  top: calc(100% + 4px);   // just below the input
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $cardbg;
+  border: 1.5px solid $cardedge;
+  border-radius: 8px;
+  list-style: none;
+  padding: 0.4rem 0;
+  margin: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+
+  // When Bootstrap's d-none is removed, this shows
+  &:not(.d-none) {
+    display: block !important;
+  }
+}
+
+.autocomplete-item {
+  padding: 0.6rem 1rem;
+  font-size: 0.7rem;           // matches Press Start 2P at a readable size
+  cursor: pointer;
+  color: $white;
+  transition: background 0.15s ease, color 0.15s ease;
+  letter-spacing: 0.03em;
+
+  &:hover {
+    background: rgba($pokeyellow, 0.12);
+    color: $pokeyellow;
+  }
+
+  // Highlight the matching part of the name
+  mark {
+    background: transparent;
+    color: $pokeyellow;
+    font-weight: 900;
+  }
+}
