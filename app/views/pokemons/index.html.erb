@@ -3,7 +3,9 @@
 
   <div class="d-flex gap-3 align-items-center flex-wrap">
     <%= link_to "Trainers", trainers_path, class: "btn btn-outline-primary btn-sm" %>
-    <%= link_to "🎲 Random Pokémon", random_pokemons_path, class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to random_pokemons_path, class: "btn btn-outline-primary btn-sm" do %>
+      <i class="fa-solid fa-dice"></i> Random Pokémon
+    <% end %>
   </div>
 
   <%# data-controller wires Stimulus, data-autocomplete-url-value tells it where to fetch %>

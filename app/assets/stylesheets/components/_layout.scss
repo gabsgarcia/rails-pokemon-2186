@@ -40,3 +40,41 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+// Footer
+.site-footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  border-top: 2px solid $cardedge;
+  text-align: center;
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba($white, 0.5);
+    text-decoration: none;
+    font-size: 0.6rem;
+    transition: color 0.2s;
+
+    i { font-size: 1.4rem; }
+
+    &:hover {
+      color: $pokeyellow;
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.5rem;
+    color: rgba($white, 0.25);
+    margin: 0;
+  }
+}

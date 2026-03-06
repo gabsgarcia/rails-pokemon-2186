@@ -146,7 +146,7 @@
   }
 }
 
-// Type badge colors
+// Type badge base
 .type-badge {
   display: inline-block;
   padding: 0.15rem 0.65rem;
@@ -155,4 +155,22 @@
   font-weight: 800;
   text-transform: capitalize;
   letter-spacing: 0.03em;
+  color: $darkbg;
 }
+
+// Type badge colors — class matches PokéAPI element_type string
+.type-normal   { background-color: $type-normal; }
+.type-fire     { background-color: $type-fire; }
+.type-water    { background-color: $type-water; }
+.type-electric { background-color: $type-electric; }
+.type-grass    { background-color: $type-grass; }
+.type-ice      { background-color: $type-ice; }
+.type-fighting { background-color: $type-fighting; color: $white; }
+.type-poison   { background-color: $type-poison; color: $white; }
+.type-ground   { background-color: $type-ground; }
+.type-flying   { background-color: $type-flying; }
+.type-psychic  { background-color: $type-psychic; }
+.type-bug      { background-color: $type-bug; }
+.type-rock     { background-color: $type-rock; }
+.type-ghost    { background-color: $type-ghost; color: $white; }
+.type-dragon   { background-color: $type-dragon; color: $white; }

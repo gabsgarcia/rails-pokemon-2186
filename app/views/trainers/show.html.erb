@@ -17,17 +17,18 @@
           <div class="pokemon-card">
             <%= cl_image_tag pokeball.pokemon.photo.key %>
             <h3><%= link_to pokeball.pokemon.name, pokeball.pokemon %></h3>
-            <span class="element-type"><%= pokeball.pokemon.element_type %></span>
+            <span class="type-badge type-<%= pokeball.pokemon.element_type %>"><%= pokeball.pokemon.element_type %></span>
             <p>Caught on <%= pokeball.caught_on.strftime("%B %d, %Y") %> at <%= pokeball.location %></p>
 
             <%# Optional 5: release button %>
-            <%= link_to "Release",
-                  pokeball,
+            <%= link_to pokeball,
                   data: {
                     turbo_method: :delete,
                     turbo_confirm: "Release #{pokeball.pokemon.name} back to the wild?"
                   },
-                  class: "btn btn-danger btn-sm" %>
+                  class: "btn btn-danger btn-sm" do %>
+              <i class="fa-solid fa-dove"></i> Release
+            <% end %>
 
             <%= link_to "", pokemon_path(pokeball.pokemon), class: "pokemon-card-link" %>
           </div>
