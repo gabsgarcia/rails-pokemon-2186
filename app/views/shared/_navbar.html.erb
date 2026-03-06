@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center gap-2" do %>
+      <%= image_tag 'pokeball.png', height: 32, alt: "Pokédex", class: "navbar-pokeball" %>
+      <span>Pokédex</span>
+    <% end %>
+
+    <div class="navbar-nav ms-auto">
+      <%= link_to "Trainers", trainers_path, class: "nav-link" %>
+      <%= link_to random_pokemons_path, class: "nav-link" do %>
+        <i class="fa-solid fa-dice"></i> Random
+      <% end %>
+    </div>
+  </div>
+</nav>

@@ -15,45 +15,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <%= link_to root_path, class: "navbar-brand d-flex align-items-center gap-2" do %>
-          <%= image_tag 'pokeball.png', height: 32, alt: "Pokédex", class: "navbar-pokeball" %>
-          <span>Pokédex</span>
-        <% end %>
-
-        <div class="navbar-nav ms-auto">
-          <%= link_to "Trainers", trainers_path, class: "nav-link" %>
-          <%= link_to random_pokemons_path, class: "nav-link" do %>
-            <i class="fa-solid fa-dice"></i> Random
-          <% end %>
-        </div>
-      </div>
-    </nav>
+    <%= render "shared/navbar" %>
 
     <div class="container">
-      <%= yield %>
       <%= render "shared/flashes" %>
+      <%= yield %>
     </div>
 
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-links">
-          <%= link_to "https://www.lewagon.com", target: "_blank", rel: "noopener", class: "footer-link" do %>
-            <i class="fa-solid fa-graduation-cap fa-bounce"></i>
-            <span>Le Wagon</span>
-          <% end %>
-          <%= link_to "https://pokeapi.co", target: "_blank", rel: "noopener", class: "footer-link" do %>
-            <i class="fa-solid fa-database fa-bounce"></i>
-            <span>PokéAPI</span>
-          <% end %>
-          <%= link_to "https://fontawesome.com", target: "_blank", rel: "noopener", class: "footer-link" do %>
-            <i class="fa-brands fa-font-awesome fa-bounce"></i>
-            <span>Font Awesome</span>
-          <% end %>
-        </div>
-        <p class="footer-copy">Built at Le Wagon &middot; Rails Reboot</p>
-      </div>
-    </footer>
+    <%= render "shared/footer" %>
   </body>
 </html>
