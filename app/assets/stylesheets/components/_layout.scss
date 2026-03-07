@@ -2,14 +2,16 @@
 // LAYOUT UTILITIES
 // ============================================
 
-// Auto-fit grid
+// Auto-fit grid — used for pokemon and trainer card grids
+// Usage: <div class="grid">
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1rem;
 }
 
-// Two column layout
+// Two column layout — used for show pages
+// Usage: <div class="two-columns">
 .two-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -22,7 +24,8 @@
   }
 }
 
-// Page header
+// Page header — used at the top of every page
+// Usage: <header class="header">
 .header {
   margin-bottom: 2rem;
   display: flex;
@@ -36,12 +39,8 @@
   }
 }
 
-// Form legend fix for Bootstrap 5
-legend ~ div.form-check:first-of-type {
-  clear: left;
-}
-
 // Footer
+// Usage: <footer class="site-footer">
 .site-footer {
   margin-top: 4rem;
   padding: 2rem 0;
@@ -55,6 +54,7 @@ legend ~ div.form-check:first-of-type {
     margin-bottom: 1rem;
   }
 
+  // Usage: <%= link_to url, class: "footer-link" %>
   .footer-link {
     display: flex;
     flex-direction: column;
@@ -67,9 +67,7 @@ legend ~ div.form-check:first-of-type {
 
     i { font-size: 1.4rem; }
 
-    &:hover {
-      color: $pokeyellow;
-    }
+    &:hover { color: $pokeyellow; }
   }
 
   .footer-copy {

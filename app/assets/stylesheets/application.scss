@@ -1,11 +1,11 @@
 // ============================================
 // IMPORT ORDER MATTERS!
-// 1. Our variables first
-// 2. Then Bootstrap (it reads our variables)
-// 3. Then our components on top
+// 1. Our config variables FIRST
+// 2. Bootstrap reads our variables
+// 3. Our components sit on top
 // ============================================
 
-// 1. Our config
+// 1. Config
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
@@ -29,7 +29,7 @@ body {
   color: $white;
 }
 
-// Simple form inputs — dark theme
+// Dark theme for all simple_form inputs
 .form-control,
 .form-select {
   background-color: $cardbg !important;

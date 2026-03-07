@@ -1,6 +1,7 @@
 // ============================================
 // BOOTSTRAP VARIABLE OVERRIDES
 // Must be declared BEFORE @import "bootstrap"
+// Bootstrap reads these and uses them when compiling
 // ============================================
 
 // Typography
@@ -25,9 +26,9 @@ $card-border-color: $cardedge;
 $card-color:        $white;
 
 // Navbar
-$navbar-dark-color:         rgba($white, 0.7);
-$navbar-dark-hover-color:   $pokeyellow;
-$navbar-dark-active-color:  $pokeyellow;
+$navbar-dark-color:        rgba($white, 0.7);
+$navbar-dark-hover-color:  $pokeyellow;
+$navbar-dark-active-color: $pokeyellow;
 
 // Border radius
 $border-radius-sm:  0.0625rem;

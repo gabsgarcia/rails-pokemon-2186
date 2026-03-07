@@ -1,5 +1,3 @@
-// app/javascript/controllers/autocomplete_controller.js
-//
 // Usage in HTML:
 //   data-controller="autocomplete"
 //   data-autocomplete-url-value="/pokemons/autocomplete"

@@ -1,14 +1,22 @@
 // ============================================
 // AUTOCOMPLETE DROPDOWN
+// Wired up with the Stimulus autocomplete controller
+//
+// Usage in HTML:
+//   <div class="autocomplete-wrapper" data-controller="autocomplete" ...>
+//     <ul class="autocomplete-results d-none" data-autocomplete-target="results">
+//     </ul>
+//   </div>
 // ============================================
 
+// Wrapper must be position: relative so the dropdown positions correctly
 .autocomplete-wrapper {
-  position: relative;  // dropdown positions relative to this
+  position: relative;
 }
 
 .autocomplete-results {
   position: absolute;
-  top: calc(100% + 4px);   // just below the input
+  top: calc(100% + 4px);
   left: 0;
   right: 0;
   z-index: 100;
@@ -21,15 +29,15 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   overflow: hidden;
 
-  // When Bootstrap's d-none is removed, this shows
   &:not(.d-none) {
     display: block !important;
   }
 }
 
+// Usage: <li class="autocomplete-item" ...>
 .autocomplete-item {
   padding: 0.6rem 1rem;
-  font-size: 0.7rem;           // matches Press Start 2P at a readable size
+  font-size: 0.7rem;
   cursor: pointer;
   color: $white;
   transition: background 0.15s ease, color 0.15s ease;
@@ -38,12 +46,5 @@
   &:hover {
     background: rgba($pokeyellow, 0.12);
     color: $pokeyellow;
-  }
-
-  // Highlight the matching part of the name
-  mark {
-    background: transparent;
-    color: $pokeyellow;
-    font-weight: 900;
   }
 }

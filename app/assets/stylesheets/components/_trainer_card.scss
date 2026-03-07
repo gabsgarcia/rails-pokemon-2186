@@ -1,5 +1,10 @@
 // ============================================
 // TRAINER CARD
+// Usage: <div class="trainer-card">
+//
+// Inside the card you can use:
+//   .trainer-card-link → full-card invisible link
+//   .age               → age text styling
 // ============================================
 
 .trainer-card {
@@ -36,6 +41,8 @@
     &:hover { text-decoration: none; }
   }
 
+  // Full-card invisible link
+  // Usage: <%= link_to "", trainer, class: "trainer-card-link" %>
   .trainer-card-link {
     position: absolute;
     top: 0;
@@ -45,9 +52,7 @@
     z-index: 2;
   }
 
-  .btn {
-    z-index: 3;
-  }
+  .btn { z-index: 3; }
 
   .age {
     font-size: 0.8rem;

@@ -1,5 +1,6 @@
 // ============================================
 // NAVBAR
+// Usage: <nav class="navbar navbar-expand-lg">
 // ============================================
 
 .navbar {
@@ -15,6 +16,7 @@
     letter-spacing: 0.05em;
   }
 
+  // Usage: <%= image_tag 'pokeball.png', class: "navbar-pokeball" %>
   .navbar-pokeball {
     height: 32px;
     width: 32px;

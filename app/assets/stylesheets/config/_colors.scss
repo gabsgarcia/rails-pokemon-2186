@@ -1,27 +1,31 @@
 // ============================================
-// COLOR PALETTE
+// COLOR PALETTE — Dark Pokédex Theme
 // ============================================
-// Dark Pokédex theme
 
-$darkbg:     #0D1117;
-$cardbg:     #161B22;
-$cardedge:   #21262D;
+// Dark backgrounds
+$darkbg:     #0D1117;   // page background
+$cardbg:     #161B22;   // card & input background
+$cardedge:   #21262D;   // subtle card border
 
+// Brand
 $pokered:    #E3350D;
-$pokeyellow: #FFCB05;
+$pokeyellow: #FFCB05;   // → Bootstrap $primary
 $pokeblue:   #003A70;
 
+// General
 $red:        #FD1015;
 $blue:       #0D6EFD;
 $dark-blue:  #051F49;
 $yellow:     #FFC65A;
 $orange:     #E67E22;
 $green:      #1EDD88;
-$gray:       #0E0000;
-$light-gray: #F4F4F4;
 $white:      #FFFFFF;
 
-// Type colors
+// ============================================
+// POKÉMON TYPE COLORS
+// Class names match PokéAPI element_type strings
+// e.g. "fire" → .type-fire { background: $type-fire }
+// ============================================
 $type-normal:   #ADB5BD;
 $type-fire:     #FFA657;
 $type-water:    #58A6FF;
@@ -37,3 +41,4 @@ $type-bug:      #A8C820;
 $type-rock:     #B8A038;
 $type-ghost:    #705898;
 $type-dragon:   #7038F8;
+$type-fairy:    #d32a92;

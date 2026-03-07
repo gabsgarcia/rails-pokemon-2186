@@ -1,8 +1,8 @@
 class Pokeball < ApplicationRecord
-  belongs_to :pokemon
   belongs_to :trainer
+  belongs_to :pokemon
 
-  TOWNS = [
+   TOWNS = [
     "Vermilion City", "Cerulean City", "Pewter City",
     "Saffron City", "Celadon City", "Cinnabar Island", "Fuchsia City"
   ].freeze

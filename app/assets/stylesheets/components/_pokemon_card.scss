@@ -1,5 +1,11 @@
 // ============================================
 // POKEMON CARD
+// Usage: <div class="pokemon-card">
+//
+// Inside the card you can use:
+//   .pokemon-card-link  → full-card invisible link
+//   .type-badge.type-{element_type} → type badge
+//   .pokemon-cry        → audio cry section on show page
 // ============================================
 
 .pokemon-card {
@@ -10,38 +16,38 @@
   padding: 1rem;
   border-radius: 0.75rem;
   background: $cardbg;
-  border: 1px solid $cardedge;      // subtle resting border
+  border: 1px solid $cardedge;
   position: relative;
-  z-index: 0;                       // needed so ::after sits behind
+  z-index: 0;
   color: $white;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  // Rainbow glow layer — hidden at rest, revealed on hover
+  // Rainbow holographic glow — hidden at rest, animates on hover
   &::after {
     content: '';
     position: absolute;
-    inset: -2px;                    // slightly bigger than the card
-    z-index: -1;                    // sits behind the card
-    border-radius: 0.875rem;        // slightly larger than card radius
+    inset: -2px;
+    z-index: -1;
+    border-radius: 0.875rem;
     background: linear-gradient(
       135deg,
       #ff0000, #ff7700, #ffff00,
       #00ff00, #0099ff, #6600ff, #ff0099
     );
     filter: blur(6px) hue-rotate(0deg);
-    opacity: 0;                     // invisible by default
+    opacity: 0;
     transition: opacity 0.3s ease;
-    animation: none;                // no animation at rest
+    animation: none;
   }
 
   &:hover {
-    transform: translateY(-6px);    // clean upward lift
-    border-color: transparent;      // hide the plain border when glow appears
+    transform: translateY(-6px);
+    border-color: transparent;
 
     &::after {
       opacity: 0.85;
-      animation: rainbow-spin 3s linear infinite; // spin only on hover
+      animation: rainbow-spin 3s linear infinite;
     }
   }
 
@@ -62,7 +68,8 @@
     &:hover { text-decoration: none; }
   }
 
-  // Full-card invisible link (z-index 2)
+  // Full-card invisible link — sits above the card, below buttons
+  // Usage: <%= link_to "", pokemon, class: "pokemon-card-link" %>
   .pokemon-card-link {
     position: absolute;
     top: 0;
@@ -72,10 +79,8 @@
     z-index: 2;
   }
 
-  // Buttons must sit ABOVE the full-card link (z-index 3)
-  .btn {
-    z-index: 3;
-  }
+  // Buttons must sit ABOVE the full-card link
+  .btn { z-index: 3; }
 
   .element-type {
     font-size: 0.55rem;
@@ -86,33 +91,22 @@
   }
 }
 
-// Keyframe — rotates through the full color wheel
+// Keyframe for rainbow border — only runs on hover
 @keyframes rainbow-spin {
   from { filter: blur(6px) hue-rotate(0deg); }
   to   { filter: blur(6px) hue-rotate(360deg); }
 }
 
+// Pokemon show page — wraps card + audio
+// Usage: <div class="pokemon-details">
 .pokemon-details {
-  max-width: 40ch;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100%;
-
-  .pokemon-card {
-    flex: 1;
-    min-height: 0;
-
-    img {
-      max-height: 100%;
-      width: auto;
-      object-fit: contain;
-    }
-  }
 }
 
+// Audio cry section on show page
+// Usage: <div class="pokemon-cry">
 .pokemon-cry {
-  flex-shrink: 0;
   margin-top: 1rem;
   padding: 0.75rem 1rem;
   background: $cardbg;
@@ -130,23 +124,16 @@
   audio {
     width: 100%;
     accent-color: $pokeyellow;
-
-    // Chrome / Safari deeper control styling
-    &::-webkit-media-controls-panel {
-      background-color: $cardbg;
-    }
-    &::-webkit-media-controls-play-button,
-    &::-webkit-media-controls-mute-button {
-      filter: invert(1);
-    }
-    &::-webkit-media-controls-current-time-display,
-    &::-webkit-media-controls-time-remaining-display {
-      color: $white;
-    }
   }
 }
 
-// Type badge base
+// ============================================
+// TYPE BADGES
+// Usage: <span class="type-badge type-<%= pokemon.element_type %>">
+// The element_type string from the DB becomes the CSS class
+// e.g. "fire" → class="type-badge type-fire"
+// ============================================
+
 .type-badge {
   display: inline-block;
   padding: 0.15rem 0.65rem;
@@ -158,7 +145,6 @@
   color: $darkbg;
 }
 
-// Type badge colors — class matches PokéAPI element_type string
 .type-normal   { background-color: $type-normal; }
 .type-fire     { background-color: $type-fire; }
 .type-water    { background-color: $type-water; }
@@ -166,7 +152,7 @@
 .type-grass    { background-color: $type-grass; }
 .type-ice      { background-color: $type-ice; }
 .type-fighting { background-color: $type-fighting; color: $white; }
-.type-poison   { background-color: $type-poison; color: $white; }
+.type-poison   { background-color: $type-poison;   color: $white; }
 .type-ground   { background-color: $type-ground; }
 .type-flying   { background-color: $type-flying; }
 .type-psychic  { background-color: $type-psychic; }
