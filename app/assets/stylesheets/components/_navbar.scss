@@ -4,39 +4,39 @@
 // ============================================
 
 .navbar {
-  background: $darkbg !important;
-  border-bottom: 2px solid $pokeyellow;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background: $darkbg !important;              // overrides Bootstrap's default navbar background
+  border-bottom: 2px solid $pokeyellow;        // yellow accent line separates the nav from the page content
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);  // subtle shadow makes the navbar appear elevated
 
   .navbar-brand {
-    font-family: $headers-font;
-    font-size: 0.7rem;
-    color: $pokeyellow !important;
-    text-shadow: 0 0 10px rgba($pokeyellow, 0.4);
-    letter-spacing: 0.05em;
+    font-family: $headers-font;                // retro pixel font for the brand name
+    font-size: 0.7rem;                         // small size fits the dense pixel font style
+    color: $pokeyellow !important;             // overrides Bootstrap's default brand color
+    text-shadow: 0 0 10px rgba($pokeyellow, 0.4); // soft glow around the brand text
+    letter-spacing: 0.05em;                    // slight spacing improves readability of pixel font
   }
 
   // Usage: <%= image_tag 'pokeball.png', class: "navbar-pokeball" %>
   .navbar-pokeball {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-    transition: transform 0.4s ease;
+    height: 32px;                              // fixed height keeps the logo from stretching
+    width: 32px;                               // fixed width keeps the logo square
+    object-fit: contain;                       // scales the image while preserving its aspect ratio
+    transition: transform 0.4s ease;           // smooth animation on hover
 
-    &:hover { transform: rotate(360deg); }
+    &:hover { transform: rotate(360deg); }     // full spin when the user hovers over the pokeball
   }
 
   .nav-link {
-    color: rgba($white, 0.65) !important;
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.3rem 0.75rem !important;
-    border-radius: 6px;
-    transition: color 0.2s, background 0.2s;
+    color: rgba($white, 0.65) !important;      // slightly transparent white — dimmed by default
+    font-weight: 700;                          // bold makes small pixel-font labels more legible
+    font-size: 0.85rem;                        // slightly smaller than body text
+    padding: 0.3rem 0.75rem !important;        // compact clickable area around each link
+    border-radius: 6px;                        // rounded corners for the hover highlight background
+    transition: color 0.2s, background 0.2s;  // smooth color and background change on hover
 
     &:hover {
-      color: $pokeyellow !important;
-      background: rgba($pokeyellow, 0.1);
+      color: $pokeyellow !important;           // link turns yellow on hover
+      background: rgba($pokeyellow, 0.1);      // faint yellow background pill on hover
     }
   }
 }

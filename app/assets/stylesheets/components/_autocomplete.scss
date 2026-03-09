@@ -11,40 +11,40 @@
 
 // Wrapper must be position: relative so the dropdown positions correctly
 .autocomplete-wrapper {
-  position: relative;
+  position: relative;   // establishes a positioning context for the absolute dropdown inside
 }
 
 .autocomplete-results {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: $cardbg;
-  border: 1.5px solid $cardedge;
-  border-radius: 8px;
-  list-style: none;
-  padding: 0.4rem 0;
-  margin: 0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+  position: absolute;           // takes the dropdown out of flow so it overlays content below
+  top: calc(100% + 4px);       // places the dropdown 4 px below the bottom of the input field
+  left: 0;                      // aligns the left edge with the input
+  right: 0;                     // aligns the right edge with the input — matches input width
+  z-index: 100;                 // sits above most page elements
+  background: $cardbg;          // dark card background to match the theme
+  border: 1.5px solid $cardedge; // subtle border to separate dropdown from the page
+  border-radius: 8px;           // rounded corners
+  list-style: none;             // removes the default bullet points from the <ul>
+  padding: 0.4rem 0;           // vertical breathing room inside the dropdown
+  margin: 0;                    // removes default <ul> margin
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); // shadow gives the dropdown a floating appearance
+  overflow: hidden;             // clips children to the border-radius so items don't poke out
 
   &:not(.d-none) {
-    display: block !important;
+    display: block !important;  // overrides Bootstrap's d-none when results are present
   }
 }
 
 // Usage: <li class="autocomplete-item" ...>
 .autocomplete-item {
-  padding: 0.6rem 1rem;
-  font-size: 0.7rem;
-  cursor: pointer;
-  color: $white;
-  transition: background 0.15s ease, color 0.15s ease;
-  letter-spacing: 0.03em;
+  padding: 0.6rem 1rem;                          // comfortable click target for each result row
+  font-size: 0.7rem;                             // small text to match the rest of the pixel-font UI
+  cursor: pointer;                               // shows a hand cursor so users know the row is clickable
+  color: $white;                                 // default text color
+  transition: background 0.15s ease, color 0.15s ease; // smooth highlight when hovering
+  letter-spacing: 0.03em;                        // slight spacing improves readability at small sizes
 
   &:hover {
-    background: rgba($pokeyellow, 0.12);
-    color: $pokeyellow;
+    background: rgba($pokeyellow, 0.12);  // faint yellow tint on the hovered row
+    color: $pokeyellow;                   // text turns yellow on hover
   }
 }

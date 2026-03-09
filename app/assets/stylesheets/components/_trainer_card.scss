@@ -8,54 +8,54 @@
 // ============================================
 
 .trainer-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border-radius: 14px;
-  background: $cardbg;
-  border: 1.5px solid $cardedge;
-  border-top: 3px solid $pokered;
-  position: relative;
-  color: $white;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease;
+  display: flex;                   // enables flexbox layout
+  flex-direction: column;          // stacks image, name, and buttons vertically
+  align-items: center;             // horizontally centers all children
+  justify-content: space-between;  // pushes top and bottom children apart so buttons sit at the bottom
+  padding: 1rem;                   // inner spacing between card edge and content
+  border-radius: 14px;             // rounded corners
+  background: $cardbg;             // dark card surface color
+  border: 1.5px solid $cardedge;  // subtle border to define card edges
+  border-top: 3px solid $pokered; // thicker red accent at the top — like a Trainer Card header stripe
+  position: relative;              // allows the full-card link overlay to be positioned inside
+  color: $white;                   // default text color for all children
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),  // springy lift animation on hover
+              box-shadow 0.25s ease;                                 // smooth shadow fade on hover
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    border-color: rgba($pokered, 0.5);
+    transform: translateY(-4px);                    // lifts the card upward slightly
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);   // adds a deeper shadow to emphasise the lift
+    border-color: rgba($pokered, 0.5);             // glows the border red on hover
   }
 
   img {
-    width: 100%;
-    max-height: 15rem;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    width: 100%;                                          // fills the card width
+    max-height: 15rem;                                    // caps the image height so cards stay uniform
+    object-fit: contain;                                  // scales the image to fit without cropping
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5)); // shadow under the trainer image
   }
 
   a {
-    color: $pokeyellow;
-    text-decoration: none;
-    &:hover { text-decoration: none; }
+    color: $pokeyellow;            // links inside cards use yellow instead of default blue
+    text-decoration: none;         // removes underline
+    &:hover { text-decoration: none; }  // keeps underline off on hover too
   }
 
   // Full-card invisible link
   // Usage: <%= link_to "", trainer, class: "trainer-card-link" %>
   .trainer-card-link {
-    position: absolute;
-    top: 0;
+    position: absolute;   // positioned relative to the card
+    top: 0;              // anchors to the top-left corner
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
+    width: 100%;         // stretches across the full card width
+    height: 100%;        // stretches across the full card height
+    z-index: 2;          // sits above the card content but below the buttons
   }
 
-  .btn { z-index: 3; }
+  .btn { z-index: 3; }  // buttons must be above the full-card link so they remain clickable
 
   .age {
-    font-size: 0.8rem;
-    opacity: 0.6;
+    font-size: 0.8rem;  // slightly smaller than body text
+    opacity: 0.6;       // dimmed to appear secondary to the trainer name
   }
 }

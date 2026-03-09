@@ -2,26 +2,39 @@
 <html>
   <head>
     <title>RailsPokemon</title>
+    <!-- viewport makes the page responsive on phones/tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%# csrf_meta_tags injects a security token that Rails checks on every form submission (prevents CSRF attacks) %>
     <%= csrf_meta_tags %>
+    <%# csp_meta_tag adds a Content-Security-Policy nonce to allow inline scripts safely %>
     <%= csp_meta_tag %>
 
+    <!-- Load Google Fonts: "Press Start 2P" for the retro pixel look, "Nunito" for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
 
+    <%# Set the browser tab icon to our custom pokeball image %>
     <%= favicon_link_tag asset_path('pokeball.png') %>
+    <%# Load the compiled CSS — data-turbo-track: "reload" forces a page refresh when the CSS file changes %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# Load JavaScript via importmap (no Node.js/webpack needed) %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <%# Render the shared navbar partial — lives at app/views/shared/_navbar.html.erb %>
     <%= render "shared/navbar" %>
 
+    <!-- .container is a Bootstrap class that adds horizontal padding and centers content -->
     <div class="container">
+      <%# Flash messages (success/error notices) — lives at app/views/shared/_flashes.html.erb %>
       <%= render "shared/flashes" %>
+      <%# yield is where the content of each individual page gets inserted %>
       <%= yield %>
     </div>
 
+    <%# Render the shared footer partial — lives at app/views/shared/_footer.html.erb %>
     <%= render "shared/footer" %>
   </body>
 </html>

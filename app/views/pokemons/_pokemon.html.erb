@@ -1,6 +1,18 @@
+<%# This is a PARTIAL — a reusable piece of HTML. It receives a local variable called `pokemon`.
+    It's called with `render pokemon` or `render "pokemons/pokemon", pokemon: @pokemon`. %>
+
 <div class="pokemon-card">
-  <%= cl_image_tag pokemon.photo.key %>
-  <h2><%= link_to pokemon.name, pokemon %></h2>
-  <span class="type-badge type-<%= pokemon.element_type %>"><%= pokemon.element_type %></span>
-  <%= link_to "", pokemon, class: "pokemon-card-link" %>
+  <%# cl_image_tag is a Cloudinary helper — it generates an <img> tag from the image key stored in the database %>
+  <%= cl_image_tag pokemon.photo.key%>
+
+  <%# link_to creates an <a> tag — here it wraps the pokemon's name and links to its show page %>
+  <h2><%=link_to pokemon.name, pokemon%></h2>
+
+  <%# Display the pokemon's type as a badge — the CSS class changes the badge color per type
+      e.g. element_type = "fire" → class="type-badge type-fire" %>
+  <span class="type-badge type-<%= pokemon.element_type%>"><%= pokemon.element_type%></span>
+
+  <%# An invisible full-card link — makes the whole card clickable, not just the title
+      The empty string "" means no visible text, but the CSS stretches it over the whole card %>
+  <%=link_to"", pokemon,class:"pokemon-card-link"%>
 </div>

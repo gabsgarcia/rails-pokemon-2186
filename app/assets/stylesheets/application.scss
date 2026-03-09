@@ -23,35 +23,35 @@
 // ============================================
 
 body {
-  padding-top: 1rem;
-  padding-bottom: 3.5rem;
-  background-color: $darkbg;
-  color: $white;
+  padding-top: 1rem;          // space between the navbar and the first page element
+  padding-bottom: 3.5rem;     // keeps content from touching the bottom of the viewport
+  background-color: $darkbg;  // dark page background
+  color: $white;              // default text color for all content
 }
 
 // Dark theme for all simple_form inputs
 .form-control,
 .form-select {
-  background-color: $cardbg !important;
-  border-color: $cardedge !important;
-  color: $white !important;
+  background-color: $cardbg !important;   // dark input background, overrides Bootstrap
+  border-color: $cardedge !important;     // subtle border to match card style
+  color: $white !important;              // white text inside inputs
 
   &:focus {
-    border-color: $pokeyellow !important;
-    box-shadow: 0 0 0 3px rgba($pokeyellow, 0.15) !important;
+    border-color: $pokeyellow !important;                    // yellow border when the field is active
+    box-shadow: 0 0 0 3px rgba($pokeyellow, 0.15) !important; // faint yellow glow ring on focus
   }
 
   &::placeholder {
-    color: rgba($white, 0.35);
+    color: rgba($white, 0.35);   // dimmed placeholder text so it doesn't compete with typed input
   }
 }
 
 // Headings use pixel font
 h1, h2 {
-  font-family: $headers-font;
-  line-height: 1.6;
+  font-family: $headers-font;   // retro "Press Start 2P" pixel font for all main headings
+  line-height: 1.6;             // extra line-height prevents pixel-font letters from overlapping
 }
 
-h1 { font-size: clamp(0.8rem, 2.5vw, 1.2rem); }
-h2 { font-size: clamp(0.7rem, 2vw, 1rem); }
-h3 { font-size: 0.9rem; }
+h1 { font-size: clamp(0.8rem, 2.5vw, 1.2rem); }  // fluid — grows with viewport, capped between 0.8–1.2 rem
+h2 { font-size: clamp(0.7rem, 2vw, 1rem); }       // slightly smaller fluid size for subheadings
+h3 { font-size: 0.9rem; }                          // fixed size for tertiary headings

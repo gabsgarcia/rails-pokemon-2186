@@ -1,4 +1,6 @@
+// Load "Press Start 2P" (retro pixel font) and "Nunito" (rounded sans-serif) from Google Fonts
+// display=swap → shows fallback text immediately while the font file loads
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800;900&display=swap');
 
-$body-font:    "Press Start 2P", cursive;
-$headers-font: "Press Start 2P", cursive;
+$body-font:    "Press Start 2P", cursive;   // Default font for body text — retro 8-bit pixel style
+$headers-font: "Press Start 2P", cursive;   // Font used for h1/h2 headings — same pixel font

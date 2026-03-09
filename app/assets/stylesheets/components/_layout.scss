@@ -5,74 +5,74 @@
 // Auto-fit grid — used for pokemon and trainer card grids
 // Usage: <div class="grid">
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
+  display: grid;                                                    // enables CSS grid layout
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));    // creates as many 160 px columns as fit, each stretching equally
+  gap: 1rem;                                                        // space between cards
 }
 
 // Two column layout — used for show pages
 // Usage: <div class="two-columns">
 .two-columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.25rem;
+  display: grid;                            // enables CSS grid layout
+  grid-template-columns: repeat(2, 1fr);   // two equal-width columns
+  gap: 2.25rem;                            // space between the two columns
 }
 
 @media (max-width: 768px) {
   .two-columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;   // collapses to a single column on mobile screens
   }
 }
 
 // Page header — used at the top of every page
 // Usage: <header class="header">
 .header {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  margin-bottom: 2rem;       // pushes the content below away from the header
+  display: flex;             // lays out children (h1, search bar, etc.) in a flex container
+  flex-direction: column;    // stacks children vertically
+  gap: 0.75rem;              // space between stacked header children
 
   h1 {
-    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
-    color: $pokeyellow;
-    text-shadow: 0 0 15px rgba($pokeyellow, 0.3);
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem);        // fluid size: grows with viewport width, capped between 0.8 and 1.2 rem
+    color: $pokeyellow;                               // yellow brand color
+    text-shadow: 0 0 15px rgba($pokeyellow, 0.3);    // subtle yellow glow behind the heading
   }
 }
 
 // Footer
 // Usage: <footer class="site-footer">
 .site-footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
-  border-top: 2px solid $cardedge;
-  text-align: center;
+  margin-top: 4rem;                    // large gap above the footer to separate it from the main content
+  padding: 2rem 0;                     // vertical breathing room inside the footer
+  border-top: 2px solid $cardedge;    // thin line separates the footer from the page body
+  text-align: center;                  // centers all inline / inline-block content
 
   .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-bottom: 1rem;
+    display: flex;              // lays the links out in a row
+    justify-content: center;   // horizontally centers the row of links
+    gap: 2.5rem;               // space between each footer link
+    margin-bottom: 1rem;       // space between links and the copyright line
   }
 
   // Usage: <%= link_to url, class: "footer-link" %>
   .footer-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba($white, 0.5);
-    text-decoration: none;
-    font-size: 0.6rem;
-    transition: color 0.2s;
+    display: flex;           // lets icon and label stack vertically inside the link
+    flex-direction: column;  // stacks icon on top, label below
+    align-items: center;     // horizontally centers icon and label
+    gap: 0.5rem;             // space between icon and label
+    color: rgba($white, 0.5);   // dim white — unobtrusive by default
+    text-decoration: none;      // removes the default underline on anchor tags
+    font-size: 0.6rem;          // very small label text
+    transition: color 0.2s;     // smooth color change on hover
 
-    i { font-size: 1.4rem; }
+    i { font-size: 1.4rem; }    // icon is larger than the label text
 
-    &:hover { color: $pokeyellow; }
+    &:hover { color: $pokeyellow; }   // turns yellow when hovered
   }
 
   .footer-copy {
-    font-size: 0.5rem;
-    color: rgba($white, 0.25);
-    margin: 0;
+    font-size: 0.5rem;             // tiny copyright line
+    color: rgba($white, 0.25);     // very faint — intentionally de-emphasized
+    margin: 0;                     // removes default paragraph margin
   }
 }

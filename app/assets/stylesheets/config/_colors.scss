@@ -1,18 +1,19 @@
 // ============================================
 // COLOR PALETTE — Dark Pokédex Theme
+// Variables starting with $ are SCSS variables — reuse them anywhere instead of repeating hex codes
 // ============================================
 
-// Dark backgrounds
+// Dark backgrounds — used for the overall page and card surfaces
 $darkbg:     #0D1117;   // page background
 $cardbg:     #161B22;   // card & input background
 $cardedge:   #21262D;   // subtle card border
 
-// Brand
-$pokered:    #E3350D;
-$pokeyellow: #FFCB05;   // → Bootstrap $primary
-$pokeblue:   #003A70;
+// Brand colors from the Pokémon franchise
+$pokered:    #E3350D;   // Pokéball red
+$pokeyellow: #FFCB05;   // Pikachu yellow — also used as Bootstrap $primary
+$pokeblue:   #003A70;   // Pokémon blue
 
-// General
+// General utility colors (used for buttons, alerts, links, etc.)
 $red:        #FD1015;
 $blue:       #0D6EFD;
 $dark-blue:  #051F49;
@@ -24,6 +25,8 @@ $white:      #FFFFFF;
 // ============================================
 // POKÉMON TYPE COLORS
 // Class names match PokéAPI element_type strings
+// How it works: in the view we write class="type-badge type-fire"
+// The SCSS reads $type-fire and applies that background color
 // e.g. "fire" → .type-fire { background: $type-fire }
 // ============================================
 $type-normal:   #ADB5BD;
@@ -41,4 +44,3 @@ $type-bug:      #A8C820;
 $type-rock:     #B8A038;
 $type-ghost:    #705898;
 $type-dragon:   #7038F8;
-$type-fairy:    #d32a92;

@@ -1,26 +1,40 @@
+<%# This page shows a single trainer and all the pokémons they've caught.
+    @trainer is set by TrainersController#show. %>
+
 <header class="header">
+  <%# link_to generates a back link to the trainers list %>
   <%= link_to "← Trainers", trainers_path %>
   <h1><%= @trainer.name %> is going to catch 'em all!</h1>
 </header>
 
+<%# two-columns is a CSS class that arranges the trainer card and pokemon list side by side %>
 <div class="two-columns">
   <div class="trainer-details">
+    <%# render @trainer looks for app/views/trainers/_trainer.html.erb and passes @trainer to it %>
     <%= render @trainer %>
   </div>
 
   <div>
-    <h2>Their Pokémon</h2>
+    <h2>Their Pokémons</h2>
 
+    <%# .exists? checks the database — more efficient than .any? for associations %>
     <% if @trainer.pokeballs.exists? %>
       <div class="grid">
+        <%# Loop over every pokeball this trainer owns — each pokeball links to one caught pokemon %>
         <% @trainer.pokeballs.each do |pokeball| %>
           <div class="pokemon-card">
+            <%# cl_image_tag is a Cloudinary helper that renders the pokemon's stored image %>
             <%= cl_image_tag pokeball.pokemon.photo.key %>
             <h3><%= link_to pokeball.pokemon.name, pokeball.pokemon %></h3>
+
+            <%# Type badge — CSS class changes per type (fire, water, grass, etc.) %>
             <span class="type-badge type-<%= pokeball.pokemon.element_type %>"><%= pokeball.pokemon.element_type %></span>
+
+            <%# strftime formats the date — "%B %d, %Y" → e.g. "March 07, 2026" %>
             <p>Caught on <%= pokeball.caught_on.strftime("%B %d, %Y") %> at <%= pokeball.location %></p>
 
-            <%# Optional 5: release button %>
+            <%# Release button — sends a DELETE request via Turbo (no full page reload) %>
+            <%# turbo_confirm shows a browser confirm dialog before deleting %>
             <%= link_to pokeball,
                   data: {
                     turbo_method: :delete,
@@ -30,12 +44,13 @@
               <i class="fa-solid fa-dove"></i> Release
             <% end %>
 
+            <%# Invisible full-card link — makes the whole card clickable to the pokemon's show page %>
             <%= link_to "", pokemon_path(pokeball.pokemon), class: "pokemon-card-link" %>
           </div>
         <% end %>
       </div>
     <% else %>
-      <p class="text-secondary">This trainer has no Pokémon yet. They should get training!</p>
+      <p class="text-secondary">This trainer has no Pokémons yet. They should get training!</p>
     <% end %>
   </div>
 </div>

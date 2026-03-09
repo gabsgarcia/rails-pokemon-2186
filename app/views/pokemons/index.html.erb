@@ -1,49 +1,67 @@
+<%# ============================================================
+    This is the Pokédex index page — the root / of the app.
+    @pokemons is set by PokemonsController#index.
+    ============================================================ %>
+
 <header class="header">
-    <h1>Pokedex</h1>
+  <h1>Pokédex</h1>
 
-    <div class="d-flex gap-3 align-items-center flex-wrap">
-        <%= link_to "Trainers", trainers_path, class:"btn btn-outline-primary btn-sm" %> 
-        <%= link_to random_pokemons_path, class:"btn btn-outline-primary btn-sm" do %> 
-            <i class="fa-solid fa-dice"></i> Random Pokémon
-        <% end %>
-    </div>
+  <div class="d-flex gap-3 align-items-center flex-wrap">
+    <%# link_to generates an <a> tag. trainers_path returns "/trainers". %>
+    <%=link_to"Trainers", trainers_path,class:"btn btn-outline-primary btn-sm"%>
 
-    <%# data-controller wires Stimulus, data-autocomplete-url-value tells it where to fetch %>
-    <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_pokemons_path%>"
+    <%# Block form of link_to — lets us put HTML (like an icon) inside the link %>
+    <%=link_to random_pokemons_path,class:"btn btn-outline-primary btn-sm" do %>
+      <i class="fa-solid fa-dice"></i> Random Pokémon
+    <%end%>
+  </div>
+
+  <%# data-controller="autocomplete" wires this div to the Stimulus JS controller in app/javascript/controllers/autocomplete_controller.js %>
+  <%# data-autocomplete-url-value passes the JSON endpoint URL into the Stimulus controller %>
+  <div data-controller="autocomplete"
+       data-autocomplete-url-value="<%= autocomplete_pokemons_path%>"
        class="autocomplete-wrapper">
 
-        <%= form_with url: root_path, method: :get do|f|%>
-            <div class="input-group">
-                <div class="form-floating">
-                    <%= f.text_field:search,
-                            placeholder:"Jigglypuff",
-                            class:"form-control",
-                            value: params[:search],
-                            autocomplete:"off",
-                            data:{
-                            autocomplete_target:"input",
-                            action:"input->autocomplete#search keydown.esc->autocomplete#close"
-                            }%>
-                    <%= f.label:search,"Search for a Pokémon"%>
-                </div>
-                <%= f.submit"Search",class:"btn btn-primary"%>
-            </div>
-        <% end %>
+    <%# form_with builds a <form> tag — method: :get means it submits via URL params (no page reload needed for search) %>
+    <%= form_with url: root_path, method: :get do |f|%>
+      <div class="input-group">
+        <div class="form-floating">
+          <%# f.text_field renders an <input type="text"> — value: params[:search] keeps the search term after submitting %>
+          <%# data: { autocomplete_target: "input" } links this field to the Stimulus controller %>
+          <%# data: { action: "input->autocomplete#search" } calls the JS search method on every keystroke %>
+          <%= f.text_field:search,
+                placeholder:"Jigglypuff",
+                class:"form-control",
+                value: params[:search],
+                autocomplete:"off",
+                data:{
+                  autocomplete_target:"input",
+                  action:"input->autocomplete#search keydown.esc->autocomplete#close"
+}%>
+          <%= f.label:search,"Search for a Pokémon"%>
+        </div>
+        <%= f.submit"Search",class:"btn btn-primary"%>
+      </div>
+    <%end%>
 
-        <%# data-autocomplete-target="results" — Stimulus renders results here %>
-        <ul class="autocomplete-results d-none" data-autocomplete-target="results"></ul>
-    </div>
+    <%# This empty <ul> is filled by the Stimulus autocomplete controller with suggestion items %>
+    <%# d-none hides it by default; the JS removes that class when there are results to show %>
+    <ul class="autocomplete-results d-none" data-autocomplete-target="results"></ul>
+  </div>
 </header>
 
-<% if @pokemons.any? %>
-    <div class="grid">
-        <% @pokemons.each do |pokemon| %>
-            <%= render pokemon %>
-        <% end %>
-    </div>
-<% else %>
-    <p class="text_secondary mt-4">
-        No Pokémon found<% if params[:search].present? %> for "<%= params[:search] %>"<% end %>.
-        Maybe we're not evolved enough 🙈
-    </p>
-<% end  %>
+<%# .any? returns true if the collection has at least one item — avoids rendering an empty grid %>
+<%if @pokemons.any? %>
+  <div class="grid">
+    <%# Loop over each pokemon and render the _pokemon.html.erb partial for it %>
+    <%@pokemons.each do |pokemon|%>
+      <%= render pokemon%>
+    <%end%>
+  </div>
+<% else%>
+  <%# No results found — show a friendly message, optionally including the search term %>
+  <p class="text-secondary mt-4">
+    No Pokémon found<% if params[:search].present?%> for "<%= params[:search]%>"<%end%>.
+    Maybe we're not evolved enough 🙈
+  </p>
+<%end%>
